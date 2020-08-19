@@ -1,62 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
-    <title>GAME</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RockPaperScissors</title>
 </head>
 <body align="center" style="background-color: gainsboro;">
-    
-    <h1>Rock, Paper, Scissors</h1>
-    <p> Select either 0, 1 or 2 for stone, paper and scissors resp.<br><br>
-    This Rule determines the winner:<b> “Rock breaks scissors, scissors cuts paper, paper covers rock.”</b></p> <br>
-    <h1>Double Player</h1>    
+  <h1>Rock, Paper, Scissors</h1>
+  <p>
+    Select either 0, 1 or 2 for stone, paper and scissors resp.<br><br>
+    This Rule determines the winner:<b> “Rock breaks scissors, scissors cuts paper, paper covers rock.”</b>
+  </p><br>
+  <h1>Double Player</h1>
+  <div class="doublePlay">
     Player1 Enter your value:
-    <input type="number" id="firstvalue" name="firstvalue"> <br><br>
+    <input type="number" id="firstvalue"><br><br>
     Player2 Enter your value:
-    <input type="number" id="secondvalue" name="secondvalue" > <br><br>
+    <input type="number" id="secondvalue"><br><br>
     <button onclick="compared2(document.getElementById('firstvalue').value,document.getElementById('secondvalue').value)">Play</button>
-    <br><br>
-    <h1>Player vs System</h1>
+  </div>
+  <br><hr><br>
+  <h1>Player VS System</h1>
+  <div class="SysPlay">
     Enter your value:
-    <input type="number" id="fval" name="fval" > <br><br>
+    <input type="number" id='fval'><br><br>
     <button onclick="compared(document.getElementById('fval').value)">Play</button><br><br>
     <div id="systemVal" style="color:brown"></div>
-    <script>
-        function compared2(ch1,ch2)
+  </div>
+  <script>
+    function compared2(ch1,ch2)
+    {
+        a=parseInt(ch1);
+        b=parseInt(ch2);
+        // Validation of Inputs(1,2,0)
+        if(a>2 || a<0 || b>2 || b<0)
         {
-            a=parseInt(ch1)
-            b=parseInt(ch2)
-            
-            
-            if(a>2 || a<0 || b>2 || b<0)
-            {
-                alert("Invalid!");
-                return;
-            }
-            if(a===b)
-            {
-                alert("It's a tie, Play again");
-            }
-            else if(a===0)
-            {
-                if(b==1)
-                {
-                    alert("Player2 wins");
-                }
-                else
-                    alert("Player1 wins");
-            }
-            else if(a===1)
-            {
-                if(b==2)
-                {
-                    alert("Player2 wins");
-                }
-                else
-                    alert("Player1 wins");
-            }
-            else if(a===2)
+          alert("Invalid");
+          return;
+        }
+        if(a===b)
+        {
+          alert("It's a tie, Play again!");
+        }
+        else if(a===0)
+        {
+          if(b===2)
+          {
+            alert("Player2 wins");
+          }
+          else
+            alert("Player1 wins");
+        }
+        else if(a===2)
             {
                 if(b==0)
                 {
@@ -65,50 +60,41 @@
                 else
                     alert("Player1 wins");
             }
-        }
-
-        function compared(ch)
+    }
+    function compared(ch)
+    {
+      a=parseInt(ch);
+      b=Math.floor(Math.random()*3) // Don't worry I'll elaborate it at the end :)
+      document.getElementById("systemVal").innerHTML=`System Entered: ${b} !`;
+      // SImply copy paste above code of compared2
+      if(a>2 || a<0)
         {
-            a=parseInt(ch)
-            b=parseInt(Math.floor(Math.random()*3))
-            document.getElementById("systemVal").innerHTML=`System Entered: ${b} !`;
-            if(a>2 || a<0 )
-            {
-                alert("Invalid!");
-                
-            }
-            if(a===b)
-            {
-                alert("It's a tie, Play again");
-            }
-            else if(a===0)
-            {
-                if(b==1)
-                {
-                    alert("System wins");
-                }
-                else
-                    alert("You win");
-            }
-            else if(a===1)
-            {
-                if(b==2)
-                {
-                    alert("System wins");
-                }
-                else
-                    alert("You win");
-            }
-            else if(a===2)
-            {
-                if(b==0)
-                {
-                    alert("System wins");
-                }
-                else
-                    alert("You win");
-            }
+          alert("Invalid");
+          return;
         }
-    </script>
+        if(a===b)
+        {
+          alert("It's a tie, Play again!");
+        }
+        else if(a===0)
+        {
+          if(b===2)
+          {
+            alert("System wins");
+          }
+          else
+            alert("You win");
+        }
+        else if(a===2)
+        {
+          if(b==0)
+          {
+            alert("System wins");
+          }
+          else
+            alert("You win");
+        }
+    }
+  </script>
 </body>
 </html>
